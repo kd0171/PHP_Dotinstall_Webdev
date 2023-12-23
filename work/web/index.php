@@ -1,6 +1,7 @@
 <?php
 
-$today = date('Y-m-d H:i:s l');
+// $name = 'Taro';
+$name = 'Taro <script>alert(1);</script>';
 
 ?>
 
@@ -12,11 +13,9 @@ $today = date('Y-m-d H:i:s l');
   <title>PHP Practice</title>
 </head>
 <body>
-  <p>Hello, PHP!</p>
-  <p>Today: <?php echo date('Y-m-d H:i:s l'); ?></p>
-  <!-- 開始タグのphpは省略可能 -->
-  <p>Today: <?= date('Y-m-d H:i:s l'); ?></p>
-  <!-- 冒頭で変数を定義することも可能 -->
-  <p>Today: <?= $today; ?></p>
+  <!-- <p>Hello, <?= $name; ?>: PHP!</p> -->
+  <!-- htmlspecialchars(変換したい文字列, ENT_QUOTES, WEBページの文字コード) -->
+  <!-- HTML に値を埋め込むときには、必ずこうした処理をする -->
+  <p>Hello, <?= htmlspecialchars($name, ENT_QUOTES, 'UTF-8'); ?>!</p>
 </body>
 </html>
