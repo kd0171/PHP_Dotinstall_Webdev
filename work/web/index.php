@@ -30,14 +30,26 @@ $names = [
   <!-- HTML に値を埋め込むときには、必ずこうした処理をする -->
   <p>Hello, <?= h($name); ?>!</p>
 
-  <ul>
-  <?php if (empty($names)) { ?>
-    <li>Nobody!</li>
-  <?php } else { ?>
-  <?php foreach ($names as $name) { ?>
+
+  <!-- 
+    ifの{}と区別しやすくなる
+    foreachは
+    <?php foreach ($names as $name): ?>
     <li><?= h($name); ?></li>
-  <?php } ?>
-  <?php } ?>
+    <?php endforeach; ?>
+    のように書くことが可能
+   -->
+  <ul>
+  <!-- foreach if while switchにはコロンとセミコロンを用いた記法もある -->
+  <!-- dowhileにはこのような記法はない -->
+  <?php if (empty($names)): ?>
+    <li>Nobody!</li>
+  <?php else: ?>
+  <?php foreach ($names as $name): ?>
+    <li><?= h($name); ?></li>
+    <!-- endの時だけセミコロンなことに注意 -->
+  <?php endforeach; ?>
+  <?php endif; ?>
   </ul>
 
 </body>
