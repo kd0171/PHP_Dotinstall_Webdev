@@ -6,8 +6,14 @@ require('../app/functions.php');
 //   return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
 // }
 
-// $name = 'Taro';
-$name = 'Taro <script>alert(1);</script>';
+$name = 'Taro';
+// $name = 'Taro <script>alert(1);</script>';
+// 配列の埋め込み
+$names = [
+  'Taro',
+  'Jiro',
+  'Saburo',
+];
 
 ?>
 
@@ -23,5 +29,16 @@ $name = 'Taro <script>alert(1);</script>';
   <!-- htmlspecialchars(変換したい文字列, ENT_QUOTES, WEBページの文字コード) -->
   <!-- HTML に値を埋め込むときには、必ずこうした処理をする -->
   <p>Hello, <?= h($name); ?>!</p>
+
+  <ul>
+  <?php if (empty($names)) { ?>
+    <li>Nobody!</li>
+  <?php } else { ?>
+  <?php foreach ($names as $name) { ?>
+    <li><?= h($name); ?></li>
+  <?php } ?>
+  <?php } ?>
+  </ul>
+
 </body>
 </html>
