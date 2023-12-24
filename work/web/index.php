@@ -3,7 +3,7 @@
 require('../app/functions.php');
 
 // colorが規定されていないエラーが出ないようにするだけ
-$color = 'transparent';
+// $color = filter_input(INPUT_COOKIE, 'color') ?? 'transparent';
 
 // 読み込みに失敗しても処理を止めるほどクリティカルではない
 include('../app/_parts/_header.php');

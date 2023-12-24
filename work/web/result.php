@@ -15,7 +15,12 @@ $username = filter_input(INPUT_GET, 'username');
   // isset()は省略可能（Null合体演算子）
    // この演算子は null または未定義の値に対してのみ動作し、他の値（例: 空の文字列 '' や 0）には効果がありません。
 // $color = $color ?? 'None selected';
-$color = filter_input(INPUT_GET, 'color')??'transparent'; //背景色のデフォルト
+$colorFromGet = filter_input(INPUT_GET, 'color')??'transparent'; //背景色のデフォルト
+// Cookieに値を保存
+  // setcookie() の前で echo を使ったり、 PHP の開始タグの前に HTML を書いたりしてはいけないので、注意しておきましょう。  
+setcookie('color', $colorFromGet);
+
+
 
 // 配列として受け取る場合には、FILTER_REQUIRE_ARRAYが必要（FILTER_DEFAULT：デフォルトのフィルタを使用）
 $colors = filter_input(INPUT_GET, 'colors', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
@@ -35,7 +40,7 @@ include('../app/_parts/_header.php');
 <!-- nl2br関数：htmlでは改行は表示されないので、タグに変える必要 -->
   <p><?= h($colors); ?></p>
   <p><?= h($colors2); ?></p>
-  <p><?= h($color); ?></p>
+  <p><?= h($colorFromGet); ?></p>
   <p><?= nl2br(h($message)); ?> by <?= h($username); ?></p>
   <p><a href="index.php">Go back</a></p>
 
