@@ -14,12 +14,20 @@ $colors = filter_input(INPUT_GET, 'colors', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY
 // empty()：配列が空の場合、trueを返す
 $colors = empty($colors) ? 'None Selected': implode(',', $colors); // implode() を使ってカンマ区切りで連結した文字列を表示
 // 読み込みに失敗しても処理を止めるほどクリティカルではない
+
+$colors2 = filter_input(INPUT_GET, 'colors2', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
+// empty()：配列が空の場合、trueを返す
+$colors2 = empty($colors2) ? 'None Selected': implode(',', $colors2);
+
+
+
 include('../app/_parts/_header.php');
 
 ?>
 <!-- nl2br関数：htmlでは改行は表示されないので、タグに変える必要 -->
   <!-- <p><?= h($color); ?></p> -->
   <p><?= h($colors); ?></p>
+  <p><?= h($colors2); ?></p>
   <p><?= nl2br(h($message)); ?> by <?= h($username); ?></p>
   <p><a href="index.php">Go back</a></p>
 

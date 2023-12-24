@@ -15,11 +15,14 @@ include('../app/_parts/_header.php');
   <textarea name="message"></textarea>
   <input type="text" name="username">
   <!-- <select name="color"> -->
-    <select name="colors[]" multiple>
-      <option value="orange">Orange</option>
-      <option value="pink">Pink</option>
-      <option value="gold">Gold</option>
-    </select>
+  <select name="colors[]" multiple>
+    <option value="orange">Orange</option>
+    <option value="pink">Pink</option>
+    <option value="gold">Gold</option>
+  </select>
+  <label><input type="checkbox" name="colors2[]" value="orange"> Orange</label>
+  <label><input type="checkbox" name="colors2[]" value="pink"> Pink</label>
+  <label><input type="checkbox" name="colors2[]" value="gold"> Gold</label>
   <button>Send</button>
 </form>
 
