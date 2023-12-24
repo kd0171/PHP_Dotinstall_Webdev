@@ -23,6 +23,9 @@ include('../app/_parts/_header.php');
   <label><input type="checkbox" name="colors2[]" value="orange"> Orange</label>
   <label><input type="checkbox" name="colors2[]" value="pink"> Pink</label>
   <label><input type="checkbox" name="colors2[]" value="gold"> Gold</label>
+  <label><input type="radio" name="color" value="orange"> Orange</label>
+  <label><input type="radio" name="color" value="pink"> Pink</label>
+  <label><input type="radio" name="color" value="gold"> Gold</label>
   <button>Send</button>
 </form>
 
