@@ -11,9 +11,33 @@
 
 require('../app/functions.php');
 
-$filename = '../app/messages.txt';
+// 定数は大文字
+define('FILENAME', '../app/messages.txt');
+
+// 直接アクセスすると空白ポストが追加されるのでPOSTでのアクセスのみ対応
+//条件文 if ($_SERVER['REQUEST_METHOD'] === 'POST') は、リクエストがPOSTメソッドである場合に真となります。
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  // POSTされたデータはfilter_inputで受け取る
+  $message = trim(filter_input(INPUT_POST, 'message'));
+  $message = $message !== '' ? $message : '...';
+
+  $filename = '../app/messages.txt';
+  $fp = fopen(FILENAME, 'a'); //'a'は追記モード
+  fwrite($fp, $message . "\n");
+  fclose($fp);
+
+  // 処理後にリダイレクトする
+  header('Location: http://localhost:8080/result.php');
+  exit;
+} 
+// 正しく処理されない場合はこのリンクに留まる
+  // else {
+  //   exit('Invalid Request');
+  // }
+
+// $filename = '../app/messages.txt';
 // 1 行ずつ配列の要素として読み込み、かつ改行を削除
-$messages = file($filename, FILE_IGNORE_NEW_LINES);
+$messages = file(FILENAME, FILE_IGNORE_NEW_LINES);
 
 include('../app/_parts/_header.php');
 
@@ -28,7 +52,8 @@ include('../app/_parts/_header.php');
 
 
 <!-- POST形式 -->
-  <form action="result.php" method="post">
+  <!-- <form action="index.php" method="post"> -->
+  <form action=" " method="post"> <!-- 空文字なら同じファイルへ行く -->
     <input type="text" name="message">
     <button>Post</button>
   </form>
