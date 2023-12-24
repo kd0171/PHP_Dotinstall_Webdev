@@ -1,7 +1,8 @@
 <?php
 
 // $color は $colorFromGet がセットされていれば、その値、セットされていなかったら、 Cookie の値、それもセットされていなかったら、 transparent にしてね、という意味
-$color = $colorFromGet ?? filter_input(INPUT_COOKIE, 'color') ?? 'transparent';
+// $color = $colorFromGet ?? filter_input(INPUT_COOKIE, 'color') ?? 'transparent';
+$color = $_SESSION['color'] ?? 'transparent';
 
 ?>
 

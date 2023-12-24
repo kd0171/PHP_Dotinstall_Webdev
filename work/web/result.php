@@ -18,7 +18,8 @@ $username = filter_input(INPUT_GET, 'username');
 $colorFromGet = filter_input(INPUT_GET, 'color')??'transparent'; //背景色のデフォルト
 // Cookieに値を保存
   // setcookie() の前で echo を使ったり、 PHP の開始タグの前に HTML を書いたりしてはいけないので、注意しておきましょう。  
-setcookie('color', $colorFromGet);
+// setcookie('color', $colorFromGet);
+$_SESSION['color'] = $colorFromGet; // sessionで書き換え
 
 
 
