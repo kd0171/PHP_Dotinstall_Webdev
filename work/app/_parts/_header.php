@@ -13,3 +13,4 @@ $color = $_SESSION['color'] ?? 'transparent';
   <title>PHP Practice</title>
 </head>
 <body style="background-color: <?= h($color); ?>;">
+
