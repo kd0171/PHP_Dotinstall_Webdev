@@ -15,7 +15,7 @@ $username = filter_input(INPUT_GET, 'username');
   // isset()は省略可能（Null合体演算子）
    // この演算子は null または未定義の値に対してのみ動作し、他の値（例: 空の文字列 '' や 0）には効果がありません。
 // $color = $color ?? 'None selected';
-$color = filter_input(INPUT_GET, 'color');
+$color = filter_input(INPUT_GET, 'color')??'transparent'; //背景色のデフォルト
 
 // 配列として受け取る場合には、FILTER_REQUIRE_ARRAYが必要（FILTER_DEFAULT：デフォルトのフィルタを使用）
 $colors = filter_input(INPUT_GET, 'colors', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);

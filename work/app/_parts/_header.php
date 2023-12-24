@@ -4,4 +4,4 @@
   <meta charset="utf-8">
   <title>PHP Practice</title>
 </head>
-<body>
+<body style="background-color: <?= h($color); ?>;">
