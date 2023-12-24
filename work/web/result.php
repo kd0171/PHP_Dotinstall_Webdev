@@ -14,8 +14,8 @@ $username = filter_input(INPUT_GET, 'username');
 include('../app/_parts/_header.php');
 
 ?>
-
-  <p><?= h($message); ?> by <?= h($username); ?></p>
+<!-- nl2br関数：htmlでは改行は表示されないので、タグに変える必要 -->
+  <p><?= nl2br(h($message)); ?> by <?= h($username); ?></p>
   <p><a href="index.php">Go back</a></p>
 
 

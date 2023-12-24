@@ -11,7 +11,8 @@ include('../app/_parts/_header.php');
   <!-- GET形式ではURLを介して値を渡す -->
 <form action="result.php" method="get">
 <!-- result.phpで送られた値をどの名前で受け取るかをname属性で指定 -->
-  <input type="text" name="message">
+  
+  <textarea name="message"></textarea>
   <input type="text" name="username">
   <button>Send</button>
 </form>
