@@ -3,7 +3,10 @@
 require('../app/functions.php');
 
 // 送られてきた値を用いるにはfilter_inputを用いる。形式は現在はGET
-$message = filter_input(INPUT_GET, 'message');
+// 前後の空白や改行を除去できる trim() という関数
+$message = trim(filter_input(INPUT_GET, 'message'));
+// $message !== ''の確認　-> 真：?から:までの間の値を代入、偽：:から;までの値を代入
+$message = $message !== '' ? $message : '...';
 $username = filter_input(INPUT_GET, 'username');
 
 
