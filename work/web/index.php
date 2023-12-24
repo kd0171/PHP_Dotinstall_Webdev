@@ -11,12 +11,16 @@
 
 require('../app/functions.php');
 
+// functionsから関数を使用
+createToken();
+
 // 定数は大文字
 define('FILENAME', '../app/messages.txt');
 
 // 直接アクセスすると空白ポストが追加されるのでPOSTでのアクセスのみ対応
 //条件文 if ($_SERVER['REQUEST_METHOD'] === 'POST') は、リクエストがPOSTメソッドである場合に真となります。
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  validateToken();
   // POSTされたデータはfilter_inputで受け取る
   $message = trim(filter_input(INPUT_POST, 'message'));
   $message = $message !== '' ? $message : '...';
@@ -56,6 +60,8 @@ include('../app/_parts/_header.php');
   <form action=" " method="post"> <!-- 空文字なら同じファイルへ行く -->
     <input type="text" name="message">
     <button>Post</button>
+    <!-- フォームにおいてトークンの値を渡す -->
+    <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
   </form>
 
 <?php
